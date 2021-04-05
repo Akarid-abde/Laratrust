@@ -25,3 +25,8 @@ Auth::routes();
 
 
 Route::resource('users','UserController');
+Route::get('/admin','AdminController@index')->name('admin');
+Route::get('/client','ClientController@index')->name('client');
+Route::get('/super','SuperController@index')->name('super');
+
+

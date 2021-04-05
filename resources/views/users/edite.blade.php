@@ -25,7 +25,14 @@
               	</div>
 
               	<div class="form-group">
-              		<label>Rolses</label>
+                            <label>Rolses</label>
+                            <div class="checkbox">
+                                   <label>
+                                          <input type="checkbox" name="roles[]" value="superA" 
+                                          {{ $user->hasRole('superA') ? 'checked' : '' }}> Super Admin
+                                   </label>
+                            </div>
+
               		<div class="checkbox">
               			<label>
               				<input type="checkbox" name="roles[]" value="admin" 

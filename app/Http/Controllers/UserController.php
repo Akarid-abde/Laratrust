@@ -13,7 +13,6 @@ class UserController extends Controller
         $this->middleware(['role:admin']);
     }
 
-
 	    /**
      * Show the application dashboard.
      *
