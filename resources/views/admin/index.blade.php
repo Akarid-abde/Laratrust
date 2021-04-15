@@ -15,7 +15,10 @@
                     @endif
 
                     {{ __('You are logged in!') }}
-                    <a href="{{route('users.index')}}"> Espace Personnelle </a>
+
+                
+                    <a href="{{ route('users.index') }}"> Espace Personnelle </a>
+          
                 </div>
             </div>
         </div>

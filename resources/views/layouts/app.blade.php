@@ -73,7 +73,7 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                @if(Auth::user()->hasRole('admin'))
+                @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('superA'))
                                  <a class="dropdown-item"  
                                  href="{{ route('users.index')}}" >
                                 Users
