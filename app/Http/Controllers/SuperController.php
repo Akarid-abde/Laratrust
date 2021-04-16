@@ -7,6 +7,9 @@ use App\User;
 
 class SuperController extends Controller
 {
+
+     
+
     public function __construct()
     {
         $this->middleware(['role:superA']);
@@ -19,11 +22,6 @@ class SuperController extends Controller
         return view('users.index',['users' => $users]);
     }
 
-/*     public function index2()
-    {
-    	  $users = User::all();
-        return view('admin.index',['users' => $users]);
-    }*/
 
     
 }

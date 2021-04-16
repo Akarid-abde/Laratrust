@@ -24,8 +24,8 @@
 					@foreach($users as $index=>$user)
 					<tr>
 						<td>{{ $index++ }}</td>
-						<td>{{ $user->name}}</td>
-						<td>{{ $user->email}}</td>
+						<td>{{ $user->name }}</td>
+						<td>{{ $user->email }}</td>
 						<td>
 								@foreach($user->roles as $index=>$role)
 				 {{  $role->display_name }} {{  $index+1 < $user->roles->count() ? ',' : '' }}
@@ -40,6 +40,67 @@
 
 		</div>
 	</div>
+
+
+
+<div class="row">
+@foreach($users as $index=>$user)
+@if($user->hasRole('admin') &&  Auth::user()->hasRole('superA'))
+<div class="col-sm-6 col-md-4">
+
+    
+     <div class="card" style="width: 18rem;">
+  <img class="card-img-top"  alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ $user->name }}</h5>
+    <p class="card-text">{{ $user->email }}</p>
+        <form action="" method="post">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+        <a href="" class="btn btn-primary">Details</a>
+        <a href="" class="btn btn-warning">edit</a>
+        <a href="" class="btn btn-default">show</a>
+
+   <button type="submit"  class="btn btn-danger">Delete</button>
+   
+                        </form>
+  </div>
+
+</div>
+</div>
+@endif
+@endforeach
+</div>
+
+<div class="row">
+@foreach($users as $index=>$user)
+@if($user->hasRole('client') &&  Auth::user()->hasRole('admin'))
+<div class="col-sm-6 col-md-4">
+
+    
+     <div class="card" style="width: 18rem;">
+  <img class="card-img-top"  alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ $user->name }}</h5>
+    <p class="card-text">{{ $user->email }}</p>
+        <form action="" method="post">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+        <a href="" class="btn btn-primary">Details</a>
+        <a href="" class="btn btn-warning">edit</a>
+        <a href="" class="btn btn-default">show</a>
+
+   <button type="submit"  class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+
+</div>
+</div>
+@endif
+@endforeach
+</div>
+
+
 </div>
 
 @endsection
