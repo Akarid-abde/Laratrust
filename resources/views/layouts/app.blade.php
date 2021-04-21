@@ -18,6 +18,10 @@
         <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
+      <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css')}}">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -27,6 +31,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style/style.css') }}" rel="stylesheet">
     @yield('styles')
 </head>
 <body>
@@ -65,7 +70,6 @@
                                 </a>
 
 
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -94,7 +98,10 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
+
+        
+
+      
 
     <script src="{{ asset('assets/js/bootstrap.min.js')}}" type="text/javascript" ></script>
 <script  src="{{ asset('assets/js/jquery-3.3.1.js')}}"></script>
@@ -103,11 +110,11 @@
    
 
     <!-- Option 2: jQuery, Popper.js, and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-  
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+<!--  -->
 
+<script  src="{{ asset('assets/js/scripts-all.js')}}"></script>
+<script  src="{{ asset('assets/js/main.js')}}"></script>
+     @yield('script')
      @yield('script')
 </body>
 </html>
