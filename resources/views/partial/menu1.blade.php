@@ -18,7 +18,7 @@
 
             <ul class="sf-menu templateux-menu d-none d-md-block">
               <li class="active">
-                <a href="{{ url('/index') }}" class="animsition-link">Home</a>
+                <a href="{{ url('/client') }}" class="animsition-link">Home</a>
               </li>
               <li><a href="{{ url('/index') }}" class="animsition-link">About</a></li>
 
@@ -46,7 +46,7 @@
               <li><a href="contact.html" class="animsition-link">Contact</a></li>
                  @if (Route::has('login'))
                     @auth
-                       <li> <a class="btn btn-primary py-3 px-4 mr-3" href="{{ url('/index') }}">Home</a></li>
+                       <li> <a class="btn btn-primary py-3 px-4 mr-3" href="{{ url('/client') }}">Home</a></li>
                     @else
                      <li>   <a class="btn btn-primary py-3 px-4 mr-3" href="{{ route('login') }}">Login</a></li>
 
