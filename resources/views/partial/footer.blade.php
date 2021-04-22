@@ -3,9 +3,9 @@
 
     <div class="row mb-5">
       <div class="col-md-4 pr-md-5">
-        <div class="block-footer-widget">
-          <h3><li><a href="{{ url('/index')}}">Entreprise En Ligne</a></li></h3>
-          <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+       <div class="block-footer-widget">
+          <h3>About Application</h3>
+          <p>Un parcours d'autorisation 100% digital, 100% traçable avec Zéro papier déposé et Zéro papier délivré.</p>
         </div>
       </div>
 

@@ -37,6 +37,7 @@
 
 
 
+@if(Auth::user()->hasRole('client') || Auth::user()->hasRole('client'))
 
 <div class="container-fluid" id="grad1">
     <div class="row justify-content-center mt-0">
@@ -309,6 +310,7 @@
         </div>
     </div>
 </div>
+@endif
 
 
 <script src="{{ asset('assets/js/bootstrap.min.js')}}" type="text/javascript" ></script>

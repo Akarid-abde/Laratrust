@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SuperController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +34,14 @@ Route::get('/admin','AdminController@index')->name('admin');
 Route::get('/client','ClientController@index')->name('client');
 Route::get('/super','SuperController@index')->name('super');
 /*Route::resource('admin','AdminController');*/
+
+
+/*Route::get('super',[SuperController::class,'index']);*/
+Route::get('super/create',[SuperController::class,'create']);
+Route::post('super',[SuperController::class,'store']);
+Route::get('super/{id}/edit',[SuperController::class,'edit']);
+Route::put('super/{id}',[SuperController::class,'update']);
+Route::delete('super/{id}',[SuperController::class,'destroy']);
+/*Route::delete('/super/{id}',[SuperController::class,'destroy']);*/
 
 
