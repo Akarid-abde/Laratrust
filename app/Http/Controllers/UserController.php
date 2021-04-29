@@ -14,6 +14,14 @@ class UserController extends Controller
         $this->middleware(['role:admin|superA']);
     }
 
+
+     public function dashbord()
+    {
+        $users = User::all();
+        return view('dashbord',['users' => $users]);
+        /*return view('users.index',compact('users'));*/
+    }
+
 	    /**
      * Show the application dashboard.
      *
@@ -25,6 +33,8 @@ class UserController extends Controller
         return view('users.index',['users' => $users]);
         /*return view('users.index',compact('users'));*/
     }
+
+
 
 
     public function edit(User $user)

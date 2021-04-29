@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SuperController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,10 @@ Route::get('/', function () {
 Route::get('/index', function () {
     return view('index');
 });
+
+/*Route::get('/dashbord', function () {
+    return view('dashbord');
+});*/
 
 Auth::routes(['verify' => true]);
 
@@ -43,5 +48,7 @@ Route::get('super/{id}/edit',[SuperController::class,'edit']);
 Route::put('super/{id}',[SuperController::class,'update']);
 Route::delete('super/{id}',[SuperController::class,'destroy']);
 /*Route::delete('/super/{id}',[SuperController::class,'destroy']);*/
+
+Route::get('dashbord',[UserController::class,'dashbord']);
 
 

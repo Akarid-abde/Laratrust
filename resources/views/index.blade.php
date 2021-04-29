@@ -18,7 +18,16 @@
         <div class="row">
 
           <div class="col-3 templateux-logo">
-            <a href="{{ url('/index') }}" class="animsition-link">Entreprise En Ligne</a>
+            @if(!Auth::user())
+            <?php $redirect = "/index"; ?> 
+            @elseif(Auth::user()->hasRole('client') || Auth::user()->hasRole('client'))
+               <?php $redirect = "/client"; ?> 
+            @elseif(Auth::user()->hasRole('admin') || Auth::user()->hasRole('admin'))
+               <?php $redirect = "/users"; ?>
+            <?php $redirect = "/index"; ?> 
+            @endif
+
+            <a href="{{ url($redirect) }}" class="animsition-link">Entreprise En Ligne</a>
           </div>
           <nav class="col-9 site-nav">
             <button class="d-block d-md-none hamburger hamburger--spin templateux-toggle templateux-toggle-light ml-auto templateux-toggle-menu" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,9 +38,9 @@
 
             <ul class="sf-menu templateux-menu d-none d-md-block">
               <li class="active">
-                <a href="{{ url('/index') }}" class="animsition-link">Home</a>
+                <a href="{{ url($redirect) }}" class="animsition-link">Home</a>
               </li>
-              <li><a href="{{ url('/index') }}" class="animsition-link">About</a></li>
+              <li><a href="{{ url($redirect) }}" class="animsition-link">About</a></li>
 
               <li>
                 <a href="services.html" class="animsition-link">Services</a>
@@ -57,7 +66,7 @@
               <li><a href="contact.html" class="animsition-link">Contact</a></li>
                  @if (Route::has('login'))
                     @auth
-                       <li> <a class="btn btn-primary py-3 px-4 mr-3" href="{{ url('/index') }}">Home</a></li>
+                       <li> <a class="btn btn-primary py-3 px-4 mr-3" href="{{ url($redirect) }}">Home</a></li>
                     @else
                      <li>   <a class="btn btn-primary py-3 px-4 mr-3" href="{{ route('login') }}">Login</a></li>
 
