@@ -82,6 +82,10 @@
                                  href="{{ route('users.index')}}" >
                                 Users
                                 </a>
+                                <a class="dropdown-item"  
+                                 href="{{ url('/dashbord') }}" >
+                                dashbord
+                                </a>
                                 @endif
                  @if(Auth::user()->hasRole('superA'))
                                  <a class="dropdown-item"  

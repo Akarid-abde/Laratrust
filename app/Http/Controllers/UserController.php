@@ -22,6 +22,14 @@ class UserController extends Controller
         /*return view('users.index',compact('users'));*/
     }
 
+      public function profile()
+    {
+      $users = User::all();
+        return view('profile',['users' => $users]);
+        /*return view('users.index',compact('users'));*/
+    }
+
+
 	    /**
      * Show the application dashboard.
      *

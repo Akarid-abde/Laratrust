@@ -11,9 +11,6 @@ use Illuminate\Support\Facades\Hash;
 
 class SuperController extends Controller
 {
-
-     
-
     public function __construct()
     {
         $this->middleware(['role:superA']);

@@ -176,6 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Laratrust\LaratrustServiceProvider::class,
+        /*ConsoleTVs\Charts\ChartsServiceProvider::class,
+*/
 
     ],
 
@@ -230,6 +232,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Laratrust'   => Laratrust\LaratrustFacade::class,
+       /* 'Charts' => ConsoleTVs\Charts\Facades\Charts::class,*/
+        
 
 
     ],

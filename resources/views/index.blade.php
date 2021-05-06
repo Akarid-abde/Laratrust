@@ -18,13 +18,15 @@
         <div class="row">
 
           <div class="col-3 templateux-logo">
+
             @if(!Auth::user())
             <?php $redirect = "/index"; ?> 
             @elseif(Auth::user()->hasRole('client') || Auth::user()->hasRole('client'))
                <?php $redirect = "/client"; ?> 
             @elseif(Auth::user()->hasRole('admin') || Auth::user()->hasRole('admin'))
                <?php $redirect = "/users"; ?>
-            <?php $redirect = "/index"; ?> 
+               @elseif(Auth::user()->hasRole('superA') || Auth::user()->hasRole('superA'))
+               <?php $redirect = "/dashbord"; ?>
             @endif
 
             <a href="{{ url($redirect) }}" class="animsition-link">Entreprise En Ligne</a>
@@ -38,13 +40,13 @@
 
             <ul class="sf-menu templateux-menu d-none d-md-block">
               <li class="active">
-                <a href="{{ url($redirect) }}" class="animsition-link">Home</a>
+                <a href="{{ url($redirect) }}" class="animsition-link">Accueil</a>
               </li>
-              <li><a href="{{ url($redirect) }}" class="animsition-link">About</a></li>
+              <!-- <li><a href="{{ url($redirect) }}" class="animsition-link">About</a></li> -->
 
               <li>
-                <a href="services.html" class="animsition-link">Services</a>
-                <ul>
+                <!-- <a href="services.html" class="animsition-link">Services</a> -->
+         <!--        <ul>
                   <li><a href="#">HR Consulting</a></li>
                   <li><a href="#">Leadership Training</a></li>
                   <li>
@@ -60,10 +62,10 @@
                       </li>
                     </ul>
                   </li>
-                </ul>
+                </ul> -->
               </li>
-              <li><a href="blog.html" class="animsition-link">Blog</a></li>
-              <li><a href="contact.html" class="animsition-link">Contact</a></li>
+             <!--  <li><a href="blog.html" class="animsition-link">Blog</a></li>
+              <li><a href="contact.html" class="animsition-link">Contact</a></li> -->
                  @if (Route::has('login'))
                     @auth
                        <li> <a class="btn btn-primary py-3 px-4 mr-3" href="{{ url($redirect) }}">Home</a></li>
@@ -93,7 +95,7 @@
             <h1 class="heading mb-3 text-white" data-aos="fade-up">Transformation digitale
  <strong>Création d’entreprise en LIGNE </strong></h1>
             <p class="lead mb-5 text-white" data-aos="fade-up"  data-aos-delay="100">Un parcours d'autorisation 100% digital, 100% traçable avec Zéro papier déposé et Zéro papier délivré.</p>
-            <p data-aos="fade-up" data-aos-delay="200"><a href="#" class="btn btn-primary py-3 px-4 mr-3">Get Started</a> <a href="#" class="text-white">Learn More</a></p>
+           <!--  <p data-aos="fade-up" data-aos-delay="200"><a href="#" class="btn btn-primary py-3 px-4 mr-3">Get Started</a> <a href="#" class="text-white">Learn More</a></p> -->
           </div>
           
         </div>

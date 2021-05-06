@@ -50,5 +50,11 @@ Route::delete('super/{id}',[SuperController::class,'destroy']);
 /*Route::delete('/super/{id}',[SuperController::class,'destroy']);*/
 
 Route::get('dashbord',[UserController::class,'dashbord']);
+Route::get('profile',[UserController::class,'profile']);
+
+
+
+//
+Route::get('bar-chart', 'ChartController@index');
 
 

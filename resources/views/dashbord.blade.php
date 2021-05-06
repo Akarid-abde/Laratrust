@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+  <title>ENL</title>
   <!-- Favicon -->
   <link rel="icon" href="{{asset('assets/dashbord/assets/img/brand/favicon.png')}}" type="image/png">
   <!-- Fonts -->
@@ -17,10 +17,12 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="{{asset('assets/dashbord/assets/css/argon.css?v=1.2.0')}}" type="text/css">
+
 </head>
 
 <body>
   <!-- Sidenav -->
+
   <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
     <div class="scrollbar-inner">
       <!-- Brand -->
@@ -35,25 +37,13 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="examples/dashboard.html">
+              <a class="nav-link active" href="{{ url('/dashbord') }}">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
-            </li>
+            </li>   
             <li class="nav-item">
-              <a class="nav-link" href="examples/icons.html">
-                <i class="ni ni-planet text-orange"></i>
-                <span class="nav-link-text">Icons</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="examples/map.html">
-                <i class="ni ni-pin-3 text-primary"></i>
-                <span class="nav-link-text">Google</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="examples/profile.html">
+              <a class="nav-link" href="{{ url('/profile') }}">
                 <i class="ni ni-single-02 text-yellow"></i>
                 <span class="nav-link-text">Profile</span>
               </a>
@@ -76,12 +66,6 @@
                 <span class="nav-link-text">Register</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="examples/upgrade.html">
-                <i class="ni ni-send text-dark"></i>
-                <span class="nav-link-text">Upgrade</span>
-              </a>
-            </li>
           </ul>
           <!-- Divider -->
           <hr class="my-3">
@@ -90,7 +74,7 @@
             <span class="docs-normal">Documentation</span>
           </h6>
           <!-- Navigation -->
-          <ul class="navbar-nav mb-md-3">
+    <!--       <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
               <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
                 <i class="ni ni-spaceship"></i>
@@ -121,7 +105,7 @@
                 <span class="nav-link-text">Upgrade to PRO</span>
               </a>
             </li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>
@@ -319,7 +303,7 @@
                 </div>
               </div>
             </li>
-          </ul>
+         <!--  </ul> -->
           <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
             <li class="nav-item dropdown">
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -353,7 +337,7 @@
                   <span>Support</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#!" class="dropdown-item">
+                <a href="" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Logout</span>
                 </a>
@@ -552,83 +536,35 @@
               <!-- Projects table -->
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
-                  <tr>
-                    <th scope="col">Page name</th>
-                    <th scope="col">Visitors</th>
-                    <th scope="col">Unique users</th>
-                    <th scope="col">Bounce rate</th>
+                  <tr>           
+            <th scope="col">Index</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Rolse</th>
+            <th scope="col">Edite</th>
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach($users as $index=>$user)
                   <tr>
                     <th scope="row">
-                      /argon/
+                      {{ $index++ }}
                     </th>
                     <td>
-                      4,569
+                      {{ $user->name }}
                     </td>
                     <td>
-                      340
+                      {{ $user->email }}
                     </td>
                     <td>
-                      <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
+                      <i class="fas fa-arrow-up text-success mr-3"></i>
+                @foreach($user->roles as $index=>$role)
+                {{  $role->display_name }} {{  $index+1 < $user->roles->count() ? ',' : '' }}
+                @endforeach
                     </td>
+                    <td scope="row"><a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">EDIT</a></td>
                   </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/index.html
-                    </th>
-                    <td>
-                      3,985
-                    </td>
-                    <td>
-                      319
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/charts.html
-                    </th>
-                    <td>
-                      3,513
-                    </td>
-                    <td>
-                      294
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/tables.html
-                    </th>
-                    <td>
-                      2,050
-                    </td>
-                    <td>
-                      147
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/profile.html
-                    </th>
-                    <td>
-                      1,795
-                    </td>
-                    <td>
-                      190
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                    </td>
+                  @endforeach
                   </tr>
                 </tbody>
               </table>
@@ -784,16 +720,17 @@
   </div>
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="{{ asset('assets/dashboard/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+<!--   <script src="{{ asset('assets/dashboard/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
   <script src="{{asset('assets/dashboard/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('assets/dashboard/assets/vendor/js-cookie/js.cookie.js')}}"></script>
   <script src="{{asset('assets/dashboard/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>
-  <script src="{{asset('assets/dashboard/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
+  <script src="{{asset('assets/dashboard/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script> -->
   <!-- Optional JS -->
-  <script src="{{asset('assets/dashboard/assets/vendor/chart.js/dist/Chart.min.js')}}"></script>
-  <script src="{{asset('assets/dashboard/assets/vendor/chart.js/dist/Chart.extension.js')}}"></script>
+<!--   <script src="{{asset('assets/dashboard/assets/vendor/chart.js/dist/Chart.min.js')}}"></script>
+  <script src="{{asset('assets/dashboard/assets/vendor/chart.js/dist/Chart.extension.js')}}"></script> -->
   <!-- Argon JS -->
   <script src="{{asset('assets/dashboard/assets/js/argon.js')}}"></script>
+  <script  src="{{ asset('assets/js/jquery-3.3.1.js')}}"></script>
 </body>
 
 </html>
