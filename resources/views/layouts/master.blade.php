@@ -70,9 +70,14 @@
     <form action="{{url('/update/'.Auth::user()->id ) }} " method="post" enctype="multipart/form-data">
     <input type="hidden" name="_method" value="PUT">
     {{ csrf_field() }}
+    <label>IDClient</label>
+     <input type="Number"  name="id" disabled="disabled" value="{{Auth::user()->id}}" />
+    <label>Nom et Prenom</label>
+    <input type="text" name="name"   placeholder="First Name" value="{{Auth::user()->name}}" /> 
 
-  <input type="text" name="ville" placeholder="Ville" /> 
-  <textarea name="adresse" class="form-control" width="40" height="40"></textarea>
+    <label>email</label>
+    <input type="text" name="email"  disabled="disabled"  placeholder="Contact No." value="{{Auth::user()->email}}" /> 
+   
 
 
   <div class="form-group">
@@ -89,13 +94,89 @@
     <fieldset>
     <div class="form-card">
     <h2 class="fs-title">Personal Information</h2> 
-    <input type="text" name="fname" placeholder="First Name" /> 
+     <form action="{{url('/fiche/store') }}" method="post" enctype="multipart/form-data">
+    @csrf
+    <div class="form-group">
+    <label for="exampleFormControlInput1">IdUser</label>
+    <input type="text" value="{{Auth::user()->id}}" disabled="disabled" name="user_id" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">nom Prenom</label>
+    <input type="text" value="{{Auth::user()->name}}" disabled="disabled"  name="name" class="form-control" >
+  </div>
+   <div class="form-group">
+    <label for="exampleFormControlInput1">Email</label>
+    <input type="text" value="{{Auth::user()->email}}" disabled="disabled"  name="email" class="form-control" >
+  </div>
+<!--   <div class="form-group">
+    <label for="exampleFormControlInput1">TypeFiche</label>
+  <input type="text" value="CN"  name="typefiche" class="form-control" placeholder="Nom et Prenom">
+  </div> -->
+  
+  <div class="form-group">
+    <label for="exampleFormControlInput1">CIN</label>
+    <input type="text"  name="cin" class="form-control" >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Date Naissance</label>
+    <input type="date" name="dateNaissance" class="form-control"  placeholder="date expération">
+  </div>
+
+  <div class="form-group">  
+  <label>Nationalité</label>
+    <input type="text" name="nationalite" placeholder="nationalite" class="form-control" /> 
+  </div>
+
+    <div class="form-group">  
+  <label>Ville</label>
+    <input type="text" name="ville" placeholder="Ville" class="form-control" /> 
+  </div>
+
+<div class="form-group">
+     <label>Tele</label>
+    <input type="Number" name="tele" placeholder="tele" /> 
+  </div>
+<div class="form-group">
+     <label>fax</label>
+    <input type="Number" name="fax" placeholder="fax" /> 
+</div>
+
+ <div class="form-group">
+    <label for="exampleFormControlTextarea1">Adresse</label>
+    <textarea name="Adresse" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+
+   <div class="form-group">
+    <label for="exampleFormControlTextarea1">Lieu Naissance</label>
+    <textarea name="lieuNaissance" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  
+
+ <div class="form-group">
+           
+      <legend>Objet de demande</legend>
+    <label>Persone Morale</label><input type="checkbox" name="M" value="M">
+    <label>Persone physique</label><input type="checkbox" name="P" value="P"> 
+            
+</div>
+
+  <div class="form-group">
+    <button class="btn btn-primary" style="border-radius:15px;">
+    Valider
+    </button>
+  </div>
+    </form>
+    <!-- <input type="text" name="fname" placeholder="First Name" /> 
     <input type="text" name="lname" placeholder="Last Name" /> 
     <input type="text" name="phno" placeholder="Contact No." /> 
-    <input type="text" name="phno_2" placeholder="Alternate Contact No." />
+    <input type="text" name="phno_2" placeholder="Alternate Contact No." /> -->
     </div> 
     <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="next" class="next action-button" value="Next Step" />
     </fieldset>
+
+
+
 
 
     <fieldset>
@@ -106,10 +187,31 @@
     <div class="form-group">
     <label for="exampleFormControlInput1">IdUser</label>
     <input type="text" value="{{Auth::user()->id}}"  name="user_id" class="form-control" placeholder="Nom et Prenom">
-  </div>
-        <div class="form-group">
+<!--   </div>
+    <div class="form-group">
     <label for="exampleFormControlInput1">TypeFiche</label>
     <input type="text" value="CN"  name="typefiche" class="form-control" placeholder="Nom et Prenom">
+  </div> -->
+</div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Bénifice</label>
+<input type="text"  value="{{Auth::user()->name}}" name="bénificier" class="form-control" placeholder="Nom et Prenom">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Form Juridique</label>
+    <select class="form-control" name="FormJuridique" id="exampleFormControlSelect1">
+      <option value="SARL" >SARL</option>
+      <option value="SAS" >SAS</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Date Experation</label>
+    <input type="date" name="dateExpération" class="form-control"  placeholder="date expération">
+  </div>
+
+ <div class="form-group">
+    <label for="exampleFormControlTextarea1">Lieu Activité</label>
+    <textarea name="lieuActivite" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
 
   <div class="form-group">
@@ -119,7 +221,7 @@
   </div>
     </form>
     </div> 
-    <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> 
+    <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
     <input type="button" name="next" class="next action-button" value="Next Step" />
     </fieldset>
 
@@ -154,13 +256,9 @@
     <label for="exampleFormControlInput1">Date Experation</label>
     <input type="date" name="dateExpération" class="form-control"  placeholder="date expération">
   </div>
-    <div class="form-group">
-    <label for="exampleFormControlInput1">Ville</label>
-    <input type="text" name="ville" class="form-control" placeholder="prenom">
-  </div>
  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Adresse</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <label for="exampleFormControlTextarea1">Lieu Activité</label>
+    <textarea name="lieuActivite" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
 
   <div class="form-group">
