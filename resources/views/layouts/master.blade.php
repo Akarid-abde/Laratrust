@@ -65,28 +65,35 @@
 
     <!-- fieldsets -->
     <fieldset> 
-    <div class="form-card">
+   <div class="form-card">
     <h2 class="fs-title">Account Information</h2> 
-    <form action="{{url('/update/'.Auth::user()->id ) }} " method="post" enctype="multipart/form-data">
+    <form action="{{url('/update/'.Auth::user()->id ) }} " method="post" enctype="multipart/form-data" class="form-inline col-md-offset-2 ">
     <input type="hidden" name="_method" value="PUT">
     {{ csrf_field() }}
-    <label>IDClient</label>
-     <input type="Number"  name="id" disabled="disabled" value="{{Auth::user()->id}}" />
-    <label>Nom et Prenom</label>
-    <input type="text" name="name"   placeholder="First Name" value="{{Auth::user()->name}}" /> 
 
-    <label>email</label>
-    <input type="text" name="email"  disabled="disabled"  placeholder="Contact No." value="{{Auth::user()->email}}" /> 
-   
+     <div class="form-group">
+      <label for="IDClient">IDClient</label>
+     <input type="Number" class="form-control"   name="id" disabled="disabled" value="{{Auth::user()->id}}" />
+    </div>
+
+    <div class="form-group">
+      <label for="name">Nom et Prenom</label>
+    <input type="text" name="name" class="form-control"   placeholder="First Name" value="{{Auth::user()->name}}" /> 
+    </div>
+
+    <div class="form-group">
+     <label for="email">email</label>
+    <input type="text" name="email" class="form-control" disabled="disabled"  placeholder="Contact No." value="{{Auth::user()->email}}" /> 
+    </div>
 
 
-  <div class="form-group">
     <button class="btn btn-primary" style="border-radius:15px;">
     Valider
     </button>
-  </div> 
+ 
+
   </form>    
-  </div> 
+  </div>
   <input type="button" name="next" class="next action-button" value="Next Step" />
   </fieldset>
 
@@ -115,7 +122,7 @@
   
   <div class="form-group">
     <label for="exampleFormControlInput1">CIN</label>
-    <input type="text"  name="cin" class="form-control" >
+    <input type="text"  name="cin" class="form-control" placeholder="CIN">
   </div>
 
   <div class="form-group">
@@ -144,22 +151,23 @@
 
  <div class="form-group">
     <label for="exampleFormControlTextarea1">Adresse</label>
-    <textarea name="Adresse" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea name="Adresse" placeholder="Adresse" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
 
    <div class="form-group">
     <label for="exampleFormControlTextarea1">Lieu Naissance</label>
-    <textarea name="lieuNaissance" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea name="lieuNaissance" placeholder="Lieu Naissance" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+
+   <div class="form-group">
+    <label for="exampleFormControlSelect1">Form Juridique</label>
+    <select class="form-control" name="ObjetDemande" id="exampleFormControlSelect1">
+      <option selected="select" disabled="disabled">choisir form Juridique</option>
+      <option value="P" >Persone Physique</option>
+      <option value="M" >Personne Morale</option>
+    </select>
   </div>
   
-
- <div class="form-group">
-           
-      <legend>Objet de demande</legend>
-    <label>Persone Morale</label><input type="checkbox" name="M" value="M">
-    <label>Persone physique</label><input type="checkbox" name="P" value="P"> 
-            
-</div>
 
   <div class="form-group">
     <button class="btn btn-primary" style="border-radius:15px;">
@@ -185,8 +193,8 @@
     <form action="{{url('/fiche/store') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
-    <label for="exampleFormControlInput1">IdUser</label>
-    <input type="text" value="{{Auth::user()->id}}"  name="user_id" class="form-control" placeholder="Nom et Prenom">
+    <label for="exampleFormControlInput1">IdClient</label>
+    <input type="text" value="{{Auth::user()->id}}" disabled="disabled"  name="user_id" class="form-control" placeholder="Nom et Prenom">
 <!--   </div>
     <div class="form-group">
     <label for="exampleFormControlInput1">TypeFiche</label>
@@ -195,8 +203,19 @@
 </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Bénifice</label>
-<input type="text"  value="{{Auth::user()->name}}" name="bénificier" class="form-control" placeholder="Nom et Prenom">
+<input type="text"  value="{{Auth::user()->name}}" disabled="disabled" name="bénificier" class="form-control" placeholder="Nom et Prenom">
   </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">ICE</label>
+    <input type="text" name="ICE" disabled="disabled" class="form-control"  placeholder="ICE" required="required">
+  </div>
+
+   <div class="form-group">
+    <label for="exampleFormControlTextarea1">domination/Raison-Sociale</label>
+    <textarea name="raison" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="domination/Raison-Commercial"></textarea>
+  </div>
+
   <div class="form-group">
     <label for="exampleFormControlSelect1">Form Juridique</label>
     <select class="form-control" name="FormJuridique" id="exampleFormControlSelect1">
@@ -204,15 +223,23 @@
       <option value="SAS" >SAS</option>
     </select>
   </div>
+
   <div class="form-group">
     <label for="exampleFormControlInput1">Date Experation</label>
-    <input type="date" name="dateExpération" class="form-control"  placeholder="date expération">
+    <input type="date" name="dateExpération" class="form-control"  placeholder="date expération" required="required">
   </div>
 
  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Lieu Activité</label>
-    <textarea name="lieuActivite" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <label for="exampleFormControlTextarea1">Activité Commercial </label>
+    <textarea name="Activité" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Activité/domination/Raison-Commercial"></textarea>
   </div>
+
+ <div class="form-group">
+    <label for="exampleFormControlTextarea1">Lieu Activité/Ville</label>
+    <input type="text"  name="lieuActivite" class="form-control" placeholder="Lieu Activité/Ville"  required="required">
+  </div>
+
+  
 
   <div class="form-group">
     <button class="btn btn-primary" style="border-radius:15px;">
@@ -231,46 +258,25 @@
     <h2 class="fs-title">Status et CIN et ContractBuy</h2> 
     <form action="{{url('/fiche/store') }}" method="post" enctype="multipart/form-data">
     @csrf
+      <div class="form-group">
+         <label>status</label>
+         <input class="form-control" type="file" name="status" required="true">
+    </div>
     <div class="form-group">
-    <label for="exampleFormControlInput1">IdUser</label>
-    <input type="text" value="{{Auth::user()->id}}"  name="user_id" class="form-control" placeholder="Nom et Prenom">
-  </div>
-        <div class="form-group">
-    <label for="exampleFormControlInput1">TypeFiche</label>
-    <input type="text" value="CN"  name="typefiche" class="form-control" placeholder="Nom et Prenom">
-  </div>
+         <label>CIN</label>
+         <input class="form-control" type="file" name="CIN" required="true">
+    </div>
+    <div class="form-group">
+         <label>contratBuy</label>
+         <input class="form-control" type="file" name="ContractBuy" required="true">
+    </div>
+    
+    <div class="form-group">
+       <button class="btn btn-primary" style="border-radius:15px;">
+        Importer les documents et Demande LTP
+       </button>
+    </div>
 
-   
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Bénifice</label>
-<input type="text"  value="{{Auth::user()->name}}" name="bénificier" class="form-control" placeholder="Nom et Prenom">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Form Juridique</label>
-    <select class="form-control" name="FormJuridique" id="exampleFormControlSelect1">
-      <option value="SARL" >SARL</option>
-      <option value="SAS" >SAS</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Date Experation</label>
-    <input type="date" name="dateExpération" class="form-control"  placeholder="date expération">
-  </div>
- <div class="form-group">
-    <label for="exampleFormControlTextarea1">Lieu Activité</label>
-    <textarea name="lieuActivite" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-
-  <div class="form-group">
-      <label>PDF</label>
-      <input class="form-control" type="file" name="pdf">
-  </div>
-
-  <div class="form-group">
-    <button class="btn btn-primary" style="border-radius:15px;">
-    Demander Certificat Nigative
-    </button>
-  </div>
     </form>
     </div> 
     <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> 
@@ -284,20 +290,43 @@
  <h2 class="fs-title">LTP</h2> 
  <form action="{{url('/fiche/store') }}" method="post" enctype="multipart/form-data">
     @csrf  
-    <div class="form-group">
-         <label>......</label>
-         <input class="form-control" type="file" name="status" required="true">
-    </div>
-    <div class="form-group">
-         <label>......</label>
-         <input class="form-control" type="file" name="CIN" required="true">
-    </div>
+
+  <div class="form-group">
+  <label for="exampleFormControlInput1">IdClient</label>
+  <input type="text" value="{{Auth::user()->id}}" disabled="disabled"  name="user_id" class="form-control" placeholder="Nom et Prenom">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Bénifice</label>
+<input type="text"  value="{{Auth::user()->name}}" disabled="disabled" name="bénificier" class="form-control" placeholder="Nom et Prenom">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">ICE</label>
+    <input type="text" name="ICE" disabled="disabled" class="form-control"  placeholder="ICE" required="required">
+  </div>
+
+   <div class="form-group">
+    <label for="exampleFormControlTextarea1">domination/Raison-Sociale</label>
+    <textarea name="raison" disabled="disabled" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="domination/Raison-Commercial"></textarea>
+  </div>
+
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Date Experation</label>
+    <input type="date" name="dateExpération" disabled="disabled" class="form-control"  placeholder="date expération" required="required">
+  </div>
+
+ <div class="form-group">
+    <label for="exampleFormControlTextarea1">Activité Commercial </label>
+    <textarea name="Activité" disabled="disabled" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Activité/domination/Raison-Commercial"></textarea>
+  </div>
+
+ <div class="form-group">
+    <label for="exampleFormControlTextarea1">Lieu Activité/Ville</label>
+    <input type="text"  name="lieuActivite" disabled="disabled" class="form-control" placeholder="Lieu Activité/Ville"  required="required">
+  </div>
     
-    <div class="form-group">
-       <button class="btn btn-primary" style="border-radius:15px;">
-       Demande LTP
-       </button>
-    </div>
  </form>
     </div> 
     <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> 
@@ -307,11 +336,76 @@
 
     <fieldset>
     <div class="form-card">
-    <h2 class="fs-title">D - RC</h2> 
-    <input type="email" name="email" placeholder="Email Id" /> 
-    <input type="text" name="uname" placeholder="UserName" /> 
-    <input type="password" name="pwd" placeholder="Password" /> 
-    <input type="password" name="cpwd" placeholder="Confirm Password" />
+    <h2 class="fs-title">D - RC</h2>
+   <form action="{{url('/fiche/store') }}" method="post" enctype="multipart/form-data">
+    @csrf  
+    
+      <div class="form-group">
+  <label for="exampleFormControlInput1">IdClient</label>
+  <input type="text" value="{{Auth::user()->id}}" disabled="disabled"  name="user_id" class="form-control" placeholder="Nom et Prenom">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Bénifice</label>
+<input type="text"  value="{{Auth::user()->name}}" disabled="disabled" name="bénificier" class="form-control" placeholder="Nom et Prenom">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">ICE</label>
+    <input type="text" name="ICE" disabled="disabled" class="form-control"  placeholder="ICE" required="required">
+  </div>
+
+   <div class="form-group">
+    <label for="exampleFormControlTextarea1">domination/Raison-Sociale</label>
+    <textarea name="raison" disabled="disabled" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="domination/Raison-Commercial"></textarea>
+  </div>
+
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Date CN</label>
+    <input type="date" name="dateExpération" disabled="disabled" class="form-control"  placeholder="date expération" required="required">
+  </div>
+
+ <div class="form-group">
+    <label for="exampleFormControlTextarea1">Activité Commercial </label>
+    <textarea name="Activité" disabled="disabled" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Activité/domination/Raison-Commercial"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Date CN</label>
+    <input type="date" name="dateExpération" disabled="disabled" class="form-control"  placeholder="date expération" required="required">
+  </div>
+
+    <div class="form-group">
+    <label for="exampleFormControlSelect1">Form Juridique</label>
+    <input type="text" name="FormJuridique" disabled="disabled" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Activité Commercial </label>
+    <textarea name="Activité" disabled="disabled" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Activité/domination/Raison-Commercial"></textarea>
+  </div>
+
+ <div class="form-group">
+    <label for="exampleFormControlTextarea1">Lieu Activité/Ville</label>
+    <input type="text"  name="lieuActivite" disabled="disabled" class="form-control" placeholder="Lieu Activité/Ville"  required="required">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Objet de demande </label>
+    <input type="text"  name="ObjetDemande" disabled="disabled" class="form-control" placeholder="ObjetDemande">
+  </div>
+
+   <div class="form-group">
+    <label for="exampleFormControlTextarea1">Capitale Montant</label>
+    <input type="number"  name="Montant"  class="form-control" placeholder="Montant en DH"  required="required">
+  </div>
+
+  <button class="btn btn-primary" style="border-radius:15px;">
+    Demande de RC
+  </button>
+
+  </form> 
     </div> 
     <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> 
     <input type="button" name="next" class="next action-button" value="Next Step" />
@@ -321,10 +415,72 @@
     <fieldset>
     <div class="form-card">
     <h2 class="fs-title">D - IF</h2> 
-    <input type="text" name="fname" placeholder="First Name" /> 
-    <input type="text" name="lname" placeholder="Last Name" /> 
-    <input type="text" name="phno" placeholder="Contact No." /> 
-    <input type="text" name="phno_2" placeholder="Alternate Contact No." />
+     <form action="{{url('/fiche/store') }}" method="post" enctype="multipart/form-data">
+    @csrf  
+    
+      <div class="form-group">
+  <label for="exampleFormControlInput1">IdClient</label>
+  <input type="text" value="{{Auth::user()->id}}" disabled="disabled"  name="user_id" class="form-control" placeholder="Nom et Prenom">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Bénifice</label>
+<input type="text"  value="{{Auth::user()->name}}" disabled="disabled" name="bénificier" class="form-control" placeholder="Nom et Prenom">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">ICE</label>
+    <input type="text" name="ICE" disabled="disabled" class="form-control"  placeholder="ICE" required="required">
+  </div>
+
+   <div class="form-group">
+    <label for="exampleFormControlTextarea1">domination/Raison-Sociale</label>
+    <textarea name="raison" disabled="disabled" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="domination/Raison-Commercial"></textarea>
+  </div>
+
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Date CN</label>
+    <input type="date" name="dateExpération" disabled="disabled" class="form-control"  placeholder="date expération" required="required">
+  </div>
+
+ <div class="form-group">
+    <label for="exampleFormControlTextarea1">Activité Commercial </label>
+    <textarea name="Activité" disabled="disabled" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Activité/domination/Raison-Commercial"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Date CN</label>
+    <input type="date" name="dateExpération" disabled="disabled" class="form-control"  placeholder="date expération" required="required">
+  </div>
+
+    <div class="form-group">
+    <label for="exampleFormControlSelect1">Form Juridique</label>
+    <input type="text" name="FormJuridique" disabled="disabled" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Activité Commercial </label>
+    <textarea name="Activité" disabled="disabled" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Activité/domination/Raison-Commercial"></textarea>
+  </div>
+
+ <div class="form-group">
+    <label for="exampleFormControlTextarea1">Lieu Activité/Ville</label>
+    <input type="text"  name="lieuActivite" disabled="disabled" class="form-control" placeholder="Lieu Activité/Ville"  required="required">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Objet de demande </label>
+    <input type="text"  name="ObjetDemande" disabled="disabled" class="form-control" placeholder="ObjetDemande">
+  </div>
+
+ 
+
+  <button class="btn btn-primary" style="border-radius:15px;">
+    Demande de IF
+  </button>
+
+  </form> 
     </div> 
     <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> 
     <input type="button" name="next" class="next action-button" value="Next Step" />
