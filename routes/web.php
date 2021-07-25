@@ -58,3 +58,9 @@ Route::get('profile',[UserController::class,'profile']);
 Route::get('bar-chart', 'ChartController@index');
 
 
+Route::get('/lo', function () {
+    return view('login');
+});
+Route::get('/logo', function () {
+    return view('regestre');
+});
